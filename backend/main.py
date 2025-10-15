@@ -40,7 +40,7 @@ async def process_youtube_video(youtube_url: YouTubeURL):
         data = response.json()
 
         if not data or "transcript" not in data:
-            raise HTTPException(status_code=404, detail="No transcript found or invalid response from SupaData.")
+            raise HTTPException(status_code=404, detail=f"No transcript found or invalid response from SupaData. Response: {data}")
 
         # The SupaData API returns the transcript directly, not a list of languages.
         # For MVP, we'll assume English is processed and return a dummy list of languages.
