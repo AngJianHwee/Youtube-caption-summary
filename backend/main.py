@@ -59,8 +59,12 @@ async def process_youtube_video(youtube_url: YouTubeURL):
         }
 
     except requests.exceptions.RequestException as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Error communicating with SupaData API: {e}")
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {e}")
 
 @app.get("/")
